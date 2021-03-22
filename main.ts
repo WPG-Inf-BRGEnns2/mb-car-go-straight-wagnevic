@@ -85,14 +85,14 @@ let sollRichtung = 180
 
 function korrigiereRichtung() {
     if (input.compassHeading() < sollRichtung){
-        vr += vr - 5;
-        vl += vl + 5;
+        vr += vr - 90;
+        vl += vl + 90;
 
     } else if (input.compassHeading() > sollRichtung){
-        vr += vr + 5;
-        vl += vl - 5;
+        vr += vr + 90;
+        vl += vl - 90;
     } 
-    
+}
 let vl = 0
 let vr = 0
 stop()
@@ -110,4 +110,6 @@ basic.forever(function () {
     serial.writeValue("vr", vr)
     serial.writeValue("vl", vl)
     schreibeGeschwindigkeit()
+
+    korrigiereRichtung()
 })
