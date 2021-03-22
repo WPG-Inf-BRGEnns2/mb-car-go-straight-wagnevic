@@ -79,6 +79,20 @@ function schreibeGeschwindigkeit () {
     pins.analogWritePin(AnalogPin.P14, vr)
     pins.analogWritePin(AnalogPin.P13, vl)
 }
+
+let sollRichtung = 180
+
+
+function korrigiereRichtung() {
+    if (input.compassHeading() < sollRichtung){
+        vr += vr - 5;
+        vl += vl + 5;
+
+    } else if (input.compassHeading() > sollRichtung){
+        vr += vr + 5;
+        vl += vl - 5;
+    } 
+    
 let vl = 0
 let vr = 0
 stop()
@@ -97,4 +111,3 @@ basic.forever(function () {
     serial.writeValue("vl", vl)
     schreibeGeschwindigkeit()
 })
-
