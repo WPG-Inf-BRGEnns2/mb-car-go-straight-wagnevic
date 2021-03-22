@@ -85,12 +85,22 @@ let sollRichtung = 180
 
 function korrigiereRichtung() {
     if (input.compassHeading() < sollRichtung){
-        vr += vr - 90;
-        vl += vl + 90;
+        if (vr > 383) {
+            vr += -90 }
+        
+        if (vl < 924)  {
+
+            vl += 90
+        }
 
     } else if (input.compassHeading() > sollRichtung){
-        vr += vr + 90;
-        vl += vl - 90;
+        
+        if (vr < 924) {
+            vr += +90;
+        }
+        if (vl > 383)   {
+            vl += -90;
+        }
     } 
 }
 let vl = 0
